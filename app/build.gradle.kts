@@ -1,6 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.dagger.hilt.android")
+    id("org.jetbrains.kotlin.plugin.serialization")
+    kotlin("kapt")
 }
 
 android {
@@ -66,4 +69,16 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+    //navigation
+    implementation("androidx.navigation:navigation-compose:2.7.5")
+    //hilt
+    implementation("com.google.dagger:hilt-android:2.46.1")
+    kapt("com.google.dagger:hilt-compiler:2.46.1")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+    //coil
+    implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+    // Retrofit Dependency
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 }
