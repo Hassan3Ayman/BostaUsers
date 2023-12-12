@@ -6,9 +6,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class AlbumDto(
     @SerialName("userId")
-    val userId: Int?,
+    val userId: String?,
     @SerialName("id")
-    val id: Int?,
+    val id: String?,
     @SerialName("title")
     val title: String?
 )
