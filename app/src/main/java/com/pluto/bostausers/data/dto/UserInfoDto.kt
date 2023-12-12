@@ -4,9 +4,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class UserDto(
+data class UserInfoDto(
     @SerialName("id")
-    val id: Int?,
+    val id: String?,
     @SerialName("name")
     val name: String?,
     @SerialName("username")
