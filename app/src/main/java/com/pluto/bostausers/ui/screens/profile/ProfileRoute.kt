@@ -1,4 +1,4 @@
-package com.pluto.bostausers.ui.screens
+package com.pluto.bostausers.ui.screens.profile
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
