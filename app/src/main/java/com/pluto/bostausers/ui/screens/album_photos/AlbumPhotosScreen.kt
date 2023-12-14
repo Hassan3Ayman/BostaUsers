@@ -1,6 +1,7 @@
 package com.pluto.bostausers.ui.screens.album_photos
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -29,14 +30,19 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
+import com.pluto.bostausers.ui.LocalNavController
 import com.pluto.bostausers.ui.screens.composable.ScreenState
+import com.pluto.bostausers.ui.screens.image_viewer.navigateToImageViewerScreen
 
 @Composable
 fun AlbumPhotosScreen(
     viewModel: AlbumPhotosViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
+    val navController = LocalNavController.current
+
     AlbumPhotosContent(
+        onClickImage = {url -> navController.navigateToImageViewerScreen(url.split("/").last())},
         onTextChange = viewModel::onSearchInputChange,
         state = state,
     )
@@ -44,6 +50,7 @@ fun AlbumPhotosScreen(
 
 @Composable
 private fun AlbumPhotosContent(
+    onClickImage: (String) -> Unit,
     onTextChange: (String) -> Unit,
     state: AlbumPhotosUiState
 ) {
@@ -92,7 +99,9 @@ private fun AlbumPhotosContent(
             ) {
                 items(state.photosUrl) {
                     Image(
-                        modifier = Modifier.size(100.dp),
+                        modifier = Modifier
+                            .size(100.dp)
+                            .clickable { onClickImage(it) },
                         painter = rememberAsyncImagePainter(model = it),
                         contentDescription = "",
                         contentScale = ContentScale.Crop
