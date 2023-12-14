@@ -10,7 +10,7 @@ import com.pluto.bostausers.ui.navigation.AppNavGraph
 val LocalNavController =
     compositionLocalOf<NavHostController> { error("No NavController found!") }
 @Composable
-fun FakeUsersApp() {
+fun BostaUsersApp() {
     val navController = rememberNavController()
     CompositionLocalProvider(LocalNavController provides navController){
         AppNavGraph()
