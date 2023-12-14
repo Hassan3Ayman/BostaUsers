@@ -48,7 +48,7 @@ fun ScreenState(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = errorMessage!!,
+                text = errorMessage ?: "",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
